@@ -11,7 +11,7 @@ class Application < Sinatra::Base
   end
 
   get '/foo' do
-    'hello'
+    'hello hello hello'
   end
 
   delete '/bar' do
