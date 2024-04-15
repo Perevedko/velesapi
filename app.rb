@@ -1,6 +1,6 @@
-require 'sinatra'
-
-SLEEP_SECONDS = ENV.fetch('SLEEP_SECONDS') {1}.to_f
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require :default
 
 class Application < Sinatra::Base
   get '/' do
