@@ -4,10 +4,7 @@ Bundler.require :default
 
 class Application < Sinatra::Base
   get '/' do
-    <<-TEXT
-      Hello.
-      Explore the /foo and the /bar endpoints.
-    TEXT
+    json(routes: %w[/ foo bar])
   end
 
   get '/foo' do
