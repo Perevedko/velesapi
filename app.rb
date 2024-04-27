@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require :default
 
 class Application < Sinatra::Base
   get '/' do
-    json(routes: %w[/ foo bar])
+    json do
+      endpoints: %w[/foo /bar]
+    end
   end
 
   get '/foo' do
