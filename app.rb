@@ -5,18 +5,22 @@ require 'bundler/setup'
 Bundler.require :default
 
 class Application < Sinatra::Base
-  get '/' do
-    json do
-      { endpoints: %w[/foo /bar] }
-    end
+  get '/', provides: :json do
+    {
+      available_endpoints: ['GET /', 'GET /fast', 'GET /file.json']
+    }.to_json
   end
 
-  get '/foo' do
-    'hello hello hello'
+  get '/fast' do
+    sleep 5
+    'is it?'
   end
 
-  delete '/bar' do
-    'how low?'
+  get '/file.json', provides: :json do
+    {
+      foo: { bar: { baz: :foooo }},
+      rand: rand(1..100)
+    }.to_json
   end
 end
 
