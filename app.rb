@@ -7,7 +7,7 @@ Bundler.require :default
 class Application < Sinatra::Base
   get '/' do
     json do
-      endpoints: %w[/foo /bar]
+      { endpoints: %w[/foo /bar] }
     end
   end
 
