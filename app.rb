@@ -22,7 +22,7 @@ class Application < Sinatra::Base
         },
         {
           path: 'GET /nestness?n=<integer>',
-          description: 'what is it?'
+          description: 'what is it? it contains a bug, go find it'
         }
       ]
     }.to_json
@@ -43,8 +43,10 @@ class Application < Sinatra::Base
   get '/nestness', provides: :json do
     n = (params[:n] || 10).to_i
     response =
-      if n <= 0
+      if n < 0
         'whoops!'
+      elsif n == 0
+        return ''
       else
         opening = '[' * n
         center = JSON::dump("why?") if n >= 100 || n == 42
