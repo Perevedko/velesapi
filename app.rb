@@ -41,7 +41,7 @@ class Application < Sinatra::Base
   end
 
   get '/nestness', provides: :json do
-    n = params[:n].to_i || 10
+    n = (params[:n] || 10).to_i
     response =
       if n <= 0
         'whoops!'
