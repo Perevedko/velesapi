@@ -47,7 +47,7 @@ class Application < Sinatra::Base
         'whoops!'
       else
         opening = '[' * n
-        center = JSON::dump("why?") if n >= 100
+        center = JSON::dump("why?") if n >= 100 || n == 42
         closing = ']' * n
         JSON.parse("#{opening}#{center}#{closing}")
       end
